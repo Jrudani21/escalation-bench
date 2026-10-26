@@ -1,0 +1,7 @@
+out/
+__pycache__/
+*.pyc
+*.sh
+build_page.py
+disable_plugins.py
+POST.md
