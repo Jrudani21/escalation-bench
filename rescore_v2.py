@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Janak Rudani
+# SPDX-License-Identifier: MIT
+# Provenance: Jrudani21/escalation-bench/rescore_v2.py 7dbe9708ad2c166c
 """Post-hoc oracle v2: extra cases derived from rules the spec already states.
 Added AFTER Opus critiques exposed gaps. Reported separately from v1; never replaces it."""
 import csv, sys

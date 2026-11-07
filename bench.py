@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Janak Rudani
+# SPDX-License-Identifier: MIT
+# Provenance: Jrudani21/escalation-bench/bench.py 34d27a80f1dcf72c
 """Escalation-ladder benchmark: 5 real-bug-flavoured tasks, mechanically scored.
 
 A = routed free model via Ken, single shot

@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Janak Rudani
+# SPDX-License-Identifier: MIT
+# Provenance: Jrudani21/escalation-bench/pipeline.py ec6f30330bb2d72d
 """Free-lane-only escalation pipeline (no Claude calls). Ken --safe-mode on every call.
 
   A  = free model, one shot
