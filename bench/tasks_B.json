@@ -1,0 +1,9 @@
+{
+  "DRAFT": "wording for Janak to edit; no hints in any prompt",
+  "tasks": {
+    "2_mape": "Monthly airline passengers 1949-1960 (series 'AirPassengers'). I fit a SARIMA model on log(passengers) and hold out the last 12 months. Write Python that reports the hold-out MAPE as a percentage. Show the code.",
+    "3_sqlite": "SQLite table coverage(patient_id TEXT, start_date TEXT, end_date TEXT) with ISO dates like '2023-01-31'. Write one SQLite query that returns, for each pair of coverage rows of the same patient, the number of overlapping days.",
+    "4_covid": "A dashboard card shows daily COVID cases from data.csv (columns: date, cases). Write the Python or JavaScript that builds the caption under the chart saying how current the data is."
+  },
+  "note": "penguin task dropped 2026-11-07: cause of the 0.057 result not found, 3 tasks remain"
+}
