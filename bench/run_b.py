@@ -19,7 +19,7 @@ def main():
     n_runs = int(sys.argv[3]) if len(sys.argv) > 3 else 10
 
     env = load_env(env_path)
-    tasks_json = json.loads((Path(__file__).parent / "tasks_B.json").read_text(encoding="utf-8"))
+    tasks_json = json.loads((Path(__file__).parent / (sys.argv[4] if len(sys.argv) > 4 else "tasks_B.json")).read_text(encoding="utf-8"))
     tasks = tasks_json["tasks"]
 
     producer_lanes = ["nvidia", "mistral", "ollama-cloud"]  # groq dropped 2026-11-07 (persistent 429)
