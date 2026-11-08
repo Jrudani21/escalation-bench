@@ -22,7 +22,7 @@ def main():
     tasks_json = json.loads((Path(__file__).parent / "tasks_B.json").read_text(encoding="utf-8"))
     tasks = tasks_json["tasks"]
 
-    producer_lanes = ["nvidia", "groq", "mistral"]
+    producer_lanes = ["nvidia", "mistral", "ollama-cloud"]  # groq dropped 2026-11-07 (persistent 429)
     lanes, missing = build_lanes(env, producer_lanes, daily_cap=100, rpm=10)
 
     if missing:
@@ -74,12 +74,14 @@ def main():
 
     # Stage 2: critic reviews each producer answer that scored 'repeat'. Critic lanes never include the producer's provider.
     tasks_text = tasks
-    CRITICS = ["ollama-cloud", "nvidia", "groq", "mistral", "gemini"]  # gemini last: tiny daily allowance
+    CRITICS = ["nvidia", "mistral", "ollama-cloud", "groq", "gemini"]  # gemini last: tiny daily allowance
     SAME_PROVIDER = {"nvidia": {"nvidia", "nvidia-lightning"}}
     cl, _ = build_lanes(env, CRITICS, daily_cap=100, rpm=10)
     r.lanes.update({l.name: l for l in cl if l.name not in r.lanes})
     for key, served_lane, served_model, reply in rows:
         lane_name, task_name, i, _ = key.split("|")
+        if lane_name not in producer_lanes:
+            continue
         if served_model != SPECS[served_lane][1] or score(task_name, reply or "") != "repeat":
             continue
         ok = [c for c in CRITICS if c in r.lanes and c not in SAME_PROVIDER.get(lane_name, {lane_name})]
