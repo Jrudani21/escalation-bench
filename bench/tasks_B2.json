@@ -1,0 +1,8 @@
+{
+  "DRAFT": "v2 for Janak to edit. Each prompt puts the original trap in the context, with no hint that it is a trap. Not run yet.",
+  "tasks": {
+    "2_mape_v2": "I am forecasting the AirPassengers series. Here is my workflow so far:\n\nimport numpy as np\nfrom statsmodels.tsa.statespace.sarimax import SARIMAX\ny = np.log(ap)            # ap = monthly passengers 1949-1960, a pandas Series\ntrain, test = y[:132], y[132:]\nfc = SARIMAX(train, order=(1,1,1), seasonal_order=(0,1,1,12)).fit(disp=False).forecast(12)\n\nAdd the code that computes the hold-out MAPE as a percentage and prints it.",
+    "3_sqlite_v2": "SQLite table coverage(patient_id TEXT, start_date TEXT, end_date TEXT), dates stored as ISO text like '2023-01-31'. A claims rule flags a patient when two of their coverage rows overlap by MORE than 30 days. Write one SQLite query that returns the flagged patient_ids.",
+    "4_covid_v2": "My dashboard page already has this line near the top of the script: page_loaded = datetime.now(). The chart plots daily cases from the history feed data.csv (columns: date, cases). Write the code for the caption under the chart that tells readers how current the data is."
+  }
+}

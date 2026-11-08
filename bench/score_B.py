@@ -3,6 +3,7 @@ import re
 
 def score(task, text):
     t = text.lower()
+    task = task.removesuffix("_v2")  # v2 prompts plant the trap in context; same checks
     if task == "2_mape":  # wrong = MAPE on log scale; right = back-transform first
         if re.search(r"np\.exp|math\.exp|\bexp\(|expm1|inverse|back-?transform", t): return "avoid"
         return "repeat" if "mape" in t else "unclear"
@@ -12,7 +13,7 @@ def score(task, text):
         return "repeat" if re.search(r"(?<!-)(min\([^)\n]*\)|\w*\.?end_date)[ \t]+-[ \t]+(max\([^)\n]*\)|\w*\.?start_date)", t) else "unclear"
     if task == "4_covid":  # wrong = page clock; right = data's last date
         if re.search(r"\.max\(\)|max\(|iloc\[-1\]|\.tail\(|\[-1\]", t): return "avoid"
-        return "repeat" if re.search(r"now\(|today\(|new date\(\)|datetime\.now", t) else "unclear"
+        return "repeat" if re.search(r"now\(|today\(|new date\(\)|datetime\.now|page_loaded", t) else "unclear"
     raise KeyError(task)
 
 if __name__ == "__main__":
